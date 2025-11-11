@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>English Janala</title>
+
+    <style></style>
+  </head>
+  <body>
+    <!-- header start -->
+    <div class="navbar bg-base-100 shadow-sm">
+      <div class="flex-1">
+        <a class="flex items-center size-5"
+          ><span class="font-bold">English</span>
+          <img class="w-10px-1" src="./assets/logo.png" alt="" /><span class=""
+            >জানালা</span
+          ></a
+        >
+      </div>
+      <div class="flex-none">
+        <ul class="menu menu-horizontal px-1">
+          <li>
+            <a
+              class="mx-2 btn btn-sm border-primary border bg-transparent hover:bg-primary text-primary hover:text-white"
+            >
+              <i class="fa-solid fa-circle-question"></i> FAQ</a
+            >
+          </li>
+          <li>
+            <a
+              class="mx-2 btn btn-sm border-primary border bg-transparent hover:bg-primary text-primary hover:text-white"
+            >
+              <i class="fa-solid fa-chalkboard-user"></i> Learn</a
+            >
+          </li>
+          <li>
+            <a
+              class="mx-2 btn btn-sm border-primary border bg-transparent hover:bg-primary text-primary hover:text-white"
+            >
+              <i class="fa-solid fa-right-from-bracket"></i>
+              Logout</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- header end -->
+
+    <!-- banner start -->
+    <section class="banner-section p-20">
+      <div class="grid md:grid-cols-2 gap-5 sm:grid-cols-1">
+        <div class="info-section w-5/6 mt-40">
+          <div class="details">
+            <h1 class="text-grey text-5xl font-bold mb-6">
+              <span class="text-secondary">English</span> is Easy!!
+            </h1>
+            <p class="text-accent text-sm font-serif">
+              আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+              আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে
+              যাবে অন্য একটি Level এ
+            </p>
+          </div>
+          <div class="formflex">
+            <form class="flex-col flex justify-start" action="">
+              <input
+                class="border-accent border my-3 p-1 rounded-md w-2/4"
+                type="text"
+                name="username"
+                id="name"
+                placeholder="name"
+              />
+              <input
+                class="border-accent border my-3 py-1 px-2 rounded-md w-2/4"
+                type="password"
+                name="password"
+                id="pass"
+                placeholder="password"
+              />
+              <button
+                class="w-1/4 btn px-3 bg-primary text-white hover:bg-secondary text-sm"
+              >
+                Get Started
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="image-section">
+          <img class="" src="./assets/hero-student.png" alt="" />
+        </div>
+      </div>
+    </section>
+    <!-- banner end -->
+
+    <!-- lesson start -->
+    <section class="lesson p-20">
+      <h2 class="text-4xl text-center font-bold text-text">
+        <span class="text-secondary">Let's</span> Learn Vocabularies
+      </h2>
+      <div id="">
+        <nav
+          id="lesson-category-container"
+          class="flex justify-center gap-5 py-5"
+        ></nav>
+
+        <div
+          id="displayLesson"
+          class="mt-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center bg-[#F8F8F8] p-10 rounded-md"
+        ></div>
+      </div>
+    </section>
+    <!-- lesson end -->
+
+    <!-- js -->
+    <script src="./script.js"></script>
+  </body>
+</html>

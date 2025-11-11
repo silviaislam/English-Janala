@@ -1,0 +1,17 @@
+{
+  "name": "b11-a6-english-janala-main",
+  "version": "1.0.0",
+  "description": "## Private Repo Link : https://classroom.github.com/a/JPUEMrmw",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.22",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18"
+  }
+}
