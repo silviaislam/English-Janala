@@ -16,8 +16,12 @@ function loadLesson(level) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => displayLesson(data.data));
+}
 
-  // console.log(url);
+// load word description
+
+function loadDescription(id) {
+  console.log(id);
 }
 // show lesoon category on page
 
@@ -47,20 +51,24 @@ function showLessonCategory(categoryData) {
 
 function displayLesson(lessons) {
   const lessonContainer = document.getElementById("displayLesson");
+  lessonContainer.innerHTML = "";
 
-  for (const lesson of lessons) {
-    const lessonWrapper = document.createElement("div");
-    console.log(lesson);
+  if (lessons.length > 0) {
+    for (const lesson of lessons) {
+      const lessonWrapper = document.createElement("div");
+      console.log(lesson);
 
-    lessonWrapper.innerHTML = `
+      lessonWrapper.innerHTML = `
     
     <div class="card card-dash bg-base-100 w-[300px]">
             <div class="card-body">
               <h2 class="!text-lg font-bold !text-center">${lesson.word}</h2>
-              <h3 class="text-center !text-sm">sub heading</h3>
-              <h2 class="!text-2xl font-extrabold text-center">meaning</h2>
+              <h3 class="text-center !text-sm">Meaning/Pronunciation</h3>
+              <h2 class="!text-md font-extrabold text-center">${
+                lesson.meaning ? lesson.meaning : "No meaning found"
+              }/${lesson.pronunciation}</h2>
               <div class="card-actions justify-between mt-10">
-                <button
+                <button onclick="loadDescription(${lesson.id})"
                   class="!bg-btnbg/50 p-2 btn hover:text-primary hover:shadow-none shadow-none"
                 >
                   <i class="fa-solid fa-circle-info"></i>
@@ -76,10 +84,43 @@ function displayLesson(lessons) {
     
     `;
 
-    lessonContainer.append(lessonWrapper);
+      lessonContainer.append(lessonWrapper);
+    }
+  } else {
+    const noLessonFound = document.createElement("div");
+    noLessonFound.classList.add(
+      "col-span-full",
+      "flex",
+      "flex-col",
+      "justify-center",
+      "items-center"
+    );
+    noLessonFound.innerHTML = `
+      <img src="https://img.icons8.com/?size=96&id=mpWDxLzGBRwX&format=png">
+        <h2 class="text-xl font-semibold text-gray-600">
+          No lessons found for this category 😔
+        </h2>
+        <p class="text-sm text-gray-500 mt-2">
+          Please try another lesson level.
+        </p>
+      </div>
+      `;
+    lessonContainer.append(noLessonFound);
   }
 
   // console.log(lessonContainer);
 }
+
+const lessonContainer = document.getElementById("displayLesson");
+lessonContainer.innerHTML = `
+  <div class="text-center p-10  col-span-full">
+    <h2 class="text-xl font-semibold text-gray-600  ">
+      No lesson selected yet 😔
+    </h2>
+    <p class="text-sm text-gray-500 mt-2">
+      Please select a lesson to start learning!
+    </p>
+  </div>
+`;
 
 lessonCategory();
