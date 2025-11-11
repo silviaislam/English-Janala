@@ -46,6 +46,21 @@ function showLessonCategory(categoryData) {
     lessonContainer.append(categoryDiv);
   }
 }
+// text to speech
+
+function speakWord(word) {
+  if (!word) {
+    alert("No word available to pronounce!");
+    return;
+  }
+
+  const utterance = new SpeechSynthesisUtterance(word); // Create a speech request
+  utterance.lang = "en-US"; // Set language/accent
+  utterance.rate = 1.2; // Speed (1 is normal)
+  utterance.pitch = 2; // Pitch (1 is normal)
+
+  window.speechSynthesis.speak(utterance); // Speak the word
+}
 
 // display lesson
 
@@ -74,7 +89,8 @@ function displayLesson(lessons) {
                   <i class="fa-solid fa-circle-info"></i>
                 </button>
                 <button
-                  class="btn !bg-btnbg/50 p-2 hover:text-primary hover:shadow-none shadow-none"
+                onclick="speakWord('${lesson.word}')"
+                  class="btn !bg-btnbg/50  p-2 hover:text-primary hover:shadow-none shadow-none"
                 >
                   <i class="fa-solid fa-volume-high"></i>
                 </button>
