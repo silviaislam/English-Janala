@@ -22,6 +22,12 @@ function loadLesson(level) {
 
 function loadDescription(id) {
   console.log(id);
+  url = `https://openapi.programming-hero.com/api/word/${id}
+`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayDescription(data.data));
+  document.getElementById("wordDesc").showModal();
 }
 // show lesoon category on page
 
@@ -56,7 +62,7 @@ function speakWord(word) {
 
   const utterance = new SpeechSynthesisUtterance(word); // Create a speech request
   utterance.lang = "en-US"; // Set language/accent
-  utterance.rate = 1.2; // Speed (1 is normal)
+  utterance.rate = 1; // Speed (1 is normal)
   utterance.pitch = 2; // Pitch (1 is normal)
 
   window.speechSynthesis.speak(utterance); // Speak the word
@@ -86,7 +92,7 @@ function displayLesson(lessons) {
                 <button onclick="loadDescription(${lesson.id})"
                   class="!bg-btnbg/50 p-2 btn hover:text-primary hover:shadow-none shadow-none"
                 >
-                  <i class="fa-solid fa-circle-info"></i>
+                  <i class="fa-solid fa-circle-info" ></i>
                 </button>
                 <button
                 onclick="speakWord('${lesson.word}')"
@@ -125,6 +131,50 @@ function displayLesson(lessons) {
   }
 
   // console.log(lessonContainer);
+}
+
+// display description
+
+function displayDescription(data) {
+  console.log(data);
+  const synonyms = data.synonyms;
+
+  const btnElement = synonyms
+    .map(
+      (item, index) =>
+        `
+    <button class="btn !px-4 border shadow-none border-primary">${item}</button>
+    `
+    )
+    .join("");
+
+  const modal = document.getElementById("wordDesc");
+  const modalContent = document.getElementById("wordDescContent");
+
+  modalContent.innerHTML = `
+
+<div class="card w-96 bg-base-100 card-sm shadow-none">
+  <div class="card-body ">
+    <h2 class="!text-lg !mb-3 font-bold ">${
+      data.word
+    } (<i class="fa-solid fa-microphone-lines"></i> ${data.pronunciation} )</h2>
+    <h3 class="font-bold !mb-0 !pb-0">Meaning</h3>
+    <p class="!-mt-2 ">${
+      data.meaning ? (data.meaning = null) : "no meaning found"
+    }</p>
+    <h3 class="font-bold !mb-0 !pb-0">Example</h3>
+    <p class="!-mt-2 !mb-4">${data.sentence}</p>
+    <h3 class="font-bold !mb-0 !pb-0">Synonyms</h3>
+    
+    <div class="justify-start card-actions ">
+
+    ${btnElement}
+
+    </div>
+  </div>
+</div>
+
+  `;
 }
 
 const lessonContainer = document.getElementById("displayLesson");

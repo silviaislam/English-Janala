@@ -22,6 +22,7 @@
 
     <style></style>
   </head>
+
   <body>
     <!-- header start -->
     <div class="navbar bg-base-100 shadow-sm">
@@ -123,6 +124,31 @@
           id="displayLesson"
           class="mt-10 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center bg-[#F8F8F8] p-10 rounded-md"
         ></div>
+
+        <!-- modal -->
+
+        <div>
+          <!-- Open the modal using ID.showModal() method -->
+          <!-- <button class="btn" onclick="wordDesc.showModal()">open modal</button> -->
+          <dialog id="wordDesc" class="modal">
+            <div class="modal-box">
+              <div
+                id="wordDescContent"
+                class="flex items-center justify-center"
+              ></div>
+              <div class="modal-action flex justify-start">
+                <form method="dialog" class="">
+                  <!-- if there is a button in form, it will close the modal -->
+                  <button
+                    class="ms-12 btn border border-primary bg-primary text-white !px-5"
+                  >
+                    Complete Learning
+                  </button>
+                </form>
+              </div>
+            </div>
+          </dialog>
+        </div>
       </div>
     </section>
     <!-- lesson end -->
